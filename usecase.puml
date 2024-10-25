@@ -1,0 +1,30 @@
+@startuml
+
+actor "Pelanggan" as pelanggan
+actor "Kasir" as kasir
+actor "Pemasok" as pemasok
+actor "Petugas Toko" as petugas_toko
+actor "Akuntan" as akuntan
+
+package "Sistem Keuangan Toko Es Krim" {
+usecase "Pencatatan Penjualan" as UC1
+usecase "Penerimaan Barang" as UC2
+usecase "Pencatatan Pendapatan" as UC3
+usecase "Perhitungan Keuntungan" as UC4
+usecase "Penyusunan Laporan Keuangan" as UC5
+}
+
+pelanggan --> UC1
+kasir --> UC1
+
+pemasok --> UC2
+petugas_toko --> UC2
+
+kasir --> UC3
+akuntan --> UC3
+
+akuntan --> UC4
+
+akuntan --> UC5
+
+@enduml

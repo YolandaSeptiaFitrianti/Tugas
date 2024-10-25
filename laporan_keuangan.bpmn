@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="sample-diagram" targetNamespace="http://bpmn.io/schema/bpmn" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd">
+  <bpmn2:collaboration id="Collaboration_16fxj58">
+    <bpmn2:participant id="Participant_0rzq4oh" processRef="Process_1" />
+  </bpmn2:collaboration>
+  <bpmn2:process id="Process_1" isExecutable="false">
+    <bpmn2:startEvent id="StartEvent_1">
+      <bpmn2:outgoing>Flow_12livx4</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:exclusiveGateway id="Gateway_0fhssy8">
+      <bpmn2:incoming>Flow_0q3rux4</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_0vwolhb</bpmn2:outgoing>
+      <bpmn2:outgoing>Flow_1aogdsh</bpmn2:outgoing>
+    </bpmn2:exclusiveGateway>
+    <bpmn2:endEvent id="Event_0mgd4ay">
+      <bpmn2:incoming>Flow_1rf2wt6</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="Flow_1rf2wt6" sourceRef="Activity_0mhqqi7" targetRef="Event_0mgd4ay" />
+    <bpmn2:sequenceFlow id="Flow_1yqhpdt" sourceRef="Activity_1av6hd9" targetRef="Activity_0mhqqi7" />
+    <bpmn2:sequenceFlow id="Flow_1aogdsh" name="tidak" sourceRef="Gateway_0fhssy8" targetRef="Activity_12napwe" />
+    <bpmn2:sequenceFlow id="Flow_0vwolhb" name="iya" sourceRef="Gateway_0fhssy8" targetRef="Activity_1av6hd9" />
+    <bpmn2:sequenceFlow id="Flow_0q3rux4" sourceRef="Activity_1hu5e7k" targetRef="Gateway_0fhssy8" />
+    <bpmn2:sequenceFlow id="Flow_1anxdm2" sourceRef="Activity_0yth8kz" targetRef="Activity_1hu5e7k" />
+    <bpmn2:sequenceFlow id="Flow_12livx4" sourceRef="StartEvent_1" targetRef="Activity_0yth8kz" />
+    <bpmn2:userTask id="Activity_0yth8kz" name="mengumpulkan data keuangan">
+      <bpmn2:incoming>Flow_12livx4</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_1anxdm2</bpmn2:outgoing>
+    </bpmn2:userTask>
+    <bpmn2:serviceTask id="Activity_1hu5e7k" name="verifikasi data keuangan">
+      <bpmn2:incoming>Flow_1anxdm2</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_0q3rux4</bpmn2:outgoing>
+    </bpmn2:serviceTask>
+    <bpmn2:serviceTask id="Activity_1av6hd9" name="menyusun laporan keuangan">
+      <bpmn2:incoming>Flow_0vwolhb</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_1yqhpdt</bpmn2:outgoing>
+    </bpmn2:serviceTask>
+    <bpmn2:userTask id="Activity_12napwe" name="mengumpulkan data keuangan">
+      <bpmn2:incoming>Flow_1aogdsh</bpmn2:incoming>
+    </bpmn2:userTask>
+    <bpmn2:userTask id="Activity_0mhqqi7" name="mengecek data keuangan">
+      <bpmn2:incoming>Flow_1yqhpdt</bpmn2:incoming>
+      <bpmn2:outgoing>Flow_1rf2wt6</bpmn2:outgoing>
+    </bpmn2:userTask>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_16fxj58">
+      <bpmndi:BPMNShape id="Participant_0rzq4oh_di" bpmnElement="Participant_0rzq4oh" isHorizontal="true">
+        <dc:Bounds x="100" y="-10" width="980" height="250" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_12livx4_di" bpmnElement="Flow_12livx4">
+        <di:waypoint x="188" y="70" />
+        <di:waypoint x="240" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1anxdm2_di" bpmnElement="Flow_1anxdm2">
+        <di:waypoint x="340" y="70" />
+        <di:waypoint x="400" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0q3rux4_di" bpmnElement="Flow_0q3rux4">
+        <di:waypoint x="500" y="70" />
+        <di:waypoint x="565" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vwolhb_di" bpmnElement="Flow_0vwolhb">
+        <di:waypoint x="615" y="70" />
+        <di:waypoint x="680" y="70" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="640" y="52" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1aogdsh_di" bpmnElement="Flow_1aogdsh">
+        <di:waypoint x="590" y="95" />
+        <di:waypoint x="590" y="180" />
+        <di:waypoint x="680" y="180" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="594" y="135" width="23" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1yqhpdt_di" bpmnElement="Flow_1yqhpdt">
+        <di:waypoint x="780" y="70" />
+        <di:waypoint x="850" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rf2wt6_di" bpmnElement="Flow_1rf2wt6">
+        <di:waypoint x="950" y="70" />
+        <di:waypoint x="1022" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="52" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0fhssy8_di" bpmnElement="Gateway_0fhssy8" isMarkerVisible="true">
+        <dc:Bounds x="565" y="45" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0mgd4ay_di" bpmnElement="Event_0mgd4ay">
+        <dc:Bounds x="1022" y="52" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1xbqf1w_di" bpmnElement="Activity_0yth8kz">
+        <dc:Bounds x="240" y="30" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0bned4j_di" bpmnElement="Activity_1hu5e7k">
+        <dc:Bounds x="400" y="30" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0egoypd_di" bpmnElement="Activity_1av6hd9">
+        <dc:Bounds x="680" y="30" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ow7s9h_di" bpmnElement="Activity_12napwe">
+        <dc:Bounds x="680" y="140" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_04sld2q_di" bpmnElement="Activity_0mhqqi7">
+        <dc:Bounds x="850" y="30" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>

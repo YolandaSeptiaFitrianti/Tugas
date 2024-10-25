@@ -1,0 +1,22 @@
+@startuml
+
+actor Pelanggan
+actor Kasir
+participant "Sistem" as Sistem
+
+Pelanggan -> Kasir: Memilih es krim
+Kasir -> Sistem: Memasukkan pesanan
+Sistem --> Kasir: Menampilkan total harga
+
+Pelanggan -> Kasir: Melakukan pembayaran
+Kasir -> Sistem: Memasukkan detail pembayaran
+Sistem --> Kasir: Verifikasi pembayaran (berhasil/gagal)
+
+alt Pembayaran Berhasil
+    Kasir -> Sistem: Mencetak struk pembelian
+    Sistem -> Database: Mencatat transaksi
+end
+
+Pelanggan <-- Kasir: Mengambil struk pembelian
+
+@enduml
