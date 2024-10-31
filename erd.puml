@@ -1,0 +1,93 @@
+@startuml
+
+entity "Pelanggan" as pelanggan {
+    +ID_Pelanggan : int
+    Nama : string
+    Alamat : string
+    No_Telepon : string
+}
+
+entity "Kasir" as kasir {
+    +ID_Kasir : int
+    Nama : string
+}
+
+entity "Barang" as barang {
+    +ID_Barang : int
+    Nama : string
+    Harga : decimal
+    Stok : int
+}
+
+entity "Pemasok" as pemasok {
+    +ID_Pemasok : int
+    Nama : string
+    Alamat : string
+    No_Telepon : string
+}
+
+entity "Transaksi Penjualan" as transaksi_penjualan {
+    +ID_Transaksi : int
+    Tanggal : date
+    Total : decimal
+    ID_Pelanggan : int
+    ID_Kasir : int
+}
+
+entity "Detail Penjualan" as detail_penjualan {
+    +ID_Detail : int
+    ID_Transaksi : int
+    ID_Barang : int
+    Jumlah : int
+    Harga : decimal
+}
+
+entity "Penerimaan Barang" as penerimaan_barang {
+    +ID_Penerimaan : int
+    Tanggal : date
+    ID_Pemasok : int
+    Total : decimal
+}
+
+entity "Detail Penerimaan" as detail_penerimaan {
+    +ID_Detail : int
+    ID_Penerimaan : int
+    ID_Barang : int
+    Jumlah : int
+    Harga : decimal
+}
+
+entity "Pendapatan" as pendapatan {
+    +ID_Pendapatan : int
+    Tanggal : date
+    Total : decimal
+    ID_Transaksi : int
+}
+
+entity "Keuntungan" as keuntungan {
+    +ID_Keuntungan : int
+    Periode : string
+    Total_Pendapatan : decimal
+    Total_Biaya : decimal
+    Keuntungan : decimal
+}
+
+entity "Laporan Keuangan" as laporan_keuangan {
+    +ID_Laporan : int
+    Periode : string
+    Total_Pendapatan : decimal
+    Total_Biaya : decimal
+    Total_Keuntungan : decimal
+}
+
+pelanggan ||--o{ transaksi_penjualan : "melakukan"
+kasir ||--o{ transaksi_penjualan : "mencatat"
+transaksi_penjualan ||--o{ detail_penjualan : "terdiri dari"
+barang ||--o{ detail_penjualan : "di dalam"
+pemasok ||--o{ penerimaan_barang : "mengirimkan"
+penerimaan_barang ||--o{ detail_penerimaan : "terdiri dari"
+barang ||--o{ detail_penerimaan : "di dalam"
+transaksi_penjualan ||--o{ pendapatan : "terkait"
+pendapatan ||--o{ keuntungan : "digunakan untuk menghitung"
+laporan_keuangan ||--o{ keuntungan : "berisi data"
+@enduml
